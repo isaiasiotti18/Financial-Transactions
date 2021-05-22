@@ -25,6 +25,7 @@
     "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-plugin-import": "^2.23.2",
     "eslint-plugin-prettier": "^3.4.0",
+    "pg": "^8.6.0",
     "prettier": "^2.3.0",
     "ts-node-dev": "^1.1.6"
   }
