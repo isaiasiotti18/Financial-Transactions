@@ -4,7 +4,7 @@
   "port": 5432,
   "username": "postgres",
   "password": "isaias963,",
-  "database": "finantransactions",
+  "database": "postgres",
   "entities": [
     "./src/models/*.ts"
   ],
