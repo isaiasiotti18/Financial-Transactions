@@ -1,10 +1,10 @@
 import { compare } from 'bcryptjs';
-import { getRepository } from 'typeorm';
 import { sign } from 'jsonwebtoken';
 
 import auth from '../config/auth';
 
 import User from '../models/User';
+import UsersRepositoryInterface from '../interfaces/UsersRepositoryInterface';
 
 interface Request {
   email: string;
@@ -17,10 +17,10 @@ interface Response {
 }
 
 export default class AuthenticateUserService {
-  public async execute({ email, password }: Request): Promise<Response> {
-    const usersRepository = getRepository(User);
+  constructor(private usersRepository: UsersRepositoryInterface) {}
 
-    const user = await usersRepository.findOne({ where: { email } });
+  public async execute({ email, password }: Request): Promise<Response> {
+    const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
       throw new Error('Incorrect email/password.');
