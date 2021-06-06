@@ -23,13 +23,13 @@ export default class Transaction {
   user: User;
 
   @Column()
-  name: string;
+  title: string;
 
   @Column()
   type: string;
 
   @Column()
-  value: string;
+  value: number;
 
   @CreateDateColumn()
   created_at: Date;
