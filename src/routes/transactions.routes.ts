@@ -6,7 +6,9 @@ import CreateTransactionService from '../services/CreateTransactionService';
 
 const transactionsRoutes = Router();
 
-transactionsRoutes.post('/', ensureAuthenticated, async (request, response) => {
+transactionsRoutes.use(ensureAuthenticated);
+
+transactionsRoutes.post('/', async (request, response) => {
   try {
     const { title, type, value } = request.body;
     const { id: user_id } = request.user;
@@ -23,9 +25,31 @@ transactionsRoutes.post('/', ensureAuthenticated, async (request, response) => {
     });
 
     return response.json(transaction);
-  } catch (err) {
-    return response.status(400).json({ error: err.message });
+  } catch {
+    return response.status(400).json();
   }
+});
+
+transactionsRoutes.get('/', async (request, response) => {
+  const transactions = new TransactionsRepository();
+
+  const listTransactions = await transactions.allTransactions();
+  const balance = await transactions.balance();
+
+  return response.json({
+    listTransactions,
+    balance,
+  });
+});
+
+transactionsRoutes.get('/type/:type', async (request, response) => {
+  const { type } = request.params;
+
+  const transactions = new TransactionsRepository();
+
+  const transactionsByType = await transactions.filterByType(type);
+
+  return response.json(transactionsByType);
 });
 
 export default transactionsRoutes;

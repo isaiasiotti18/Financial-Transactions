@@ -15,7 +15,7 @@ export default class TransactionsRepository
   }
 
   async allTransactions(): Promise<Transaction[]> {
-    const transactions = this.ormRepository.find();
+    const transactions = await this.ormRepository.find();
 
     return transactions;
   }
