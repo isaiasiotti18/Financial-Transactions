@@ -1,6 +1,5 @@
-import { request } from 'express';
-import TransactionsRepositoryInterface from '../interfaces/TransactionsRepositoryInterface';
-import Transaction from '../models/Transaction';
+import TransactionsRepositoryInterface from '@modules/transactions/dtos/TransactionsRepositoryInterface';
+import Transaction from '@modules/transactions/infra/typeorm/entities/Transaction';
 
 interface Request {
   user_id: string;

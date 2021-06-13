@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import UsersRepository from '../repositories/UsersRepository';
+import UsersRepository from '@modules/users/repositories/UsersRepository';
 
-import AuthenticateUserService from '../services/AuthenticateUserService';
+import AuthenticateUserService from '@modules/users/services/AuthenticateUserService';
 
 const sessionsRoutes = Router();
 
@@ -17,7 +17,7 @@ sessionsRoutes.post('/', async (request, response) => {
     });
 
     return response.json({ user, token });
-  } catch (err) {
+  } catch (err: any) {
     return response.status(400).json({ error: err.message });
   }
 });

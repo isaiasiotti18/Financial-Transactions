@@ -1,8 +1,8 @@
 import { getRepository, Repository } from 'typeorm';
-import CreateUserDTO from '../dtos/CreateUserDTO';
+import CreateUserDTO from '@modules/users/dtos/CreateUserDTO';
 
-import UsersRepositoryInterface from '../interfaces/UsersRepositoryInterface';
-import User from '../models/User';
+import UsersRepositoryInterface from '@modules/users/dtos/UsersRepositoryInterface';
+import User from '@modules/users/infra/typeorm/entities/User';
 
 export default class UsersRepository implements UsersRepositoryInterface {
   private ormRepository: Repository<User>;

@@ -1,5 +1,5 @@
-import CreateTransactionDTO from '../dtos/CreateTransactionDTO';
-import Transaction from '../models/Transaction';
+import CreateTransactionDTO from '@modules/transactions/dtos/CreateTransactionDTO';
+import Transaction from '@modules/transactions/infra/typeorm/entities/Transaction';
 import Balance from './Balance';
 
 export default interface TransactionsRepositoryInterface {

@@ -1,10 +1,10 @@
 import { getRepository, Repository } from 'typeorm';
 import CreateTransactionDTO from '../dtos/CreateTransactionDTO';
-import Balance from '../interfaces/Balance';
+import Balance from '@modules/transactions/dtos/Balance';
 
-import TransactionsRepositoryInterface from '../interfaces/TransactionsRepositoryInterface';
-import Transaction from '../models/Transaction';
-import User from '../models/User';
+import TransactionsRepositoryInterface from '@modules/transactions/dtos/TransactionsRepositoryInterface';
+import Transaction from '@modules/transactions/infra/typeorm/entities/Transaction';
+import User from '@modules/users/infra/typeorm/entities/User';
 
 export default class TransactionsRepository
   implements TransactionsRepositoryInterface

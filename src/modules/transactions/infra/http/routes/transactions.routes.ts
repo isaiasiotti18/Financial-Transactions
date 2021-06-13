@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import ensureAuthenticated from '../middlewares/ensureAuthenticate';
-import TransactionsRepository from '../repositories/TransactionsRepository';
+import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticate';
+import TransactionsRepository from '@modules/transactions/repositories/TransactionsRepository';
 
-import CreateTransactionService from '../services/CreateTransactionService';
+import CreateTransactionService from '@modules/transactions/services/CreateTransactionService';
 
 const transactionsRoutes = Router();
 

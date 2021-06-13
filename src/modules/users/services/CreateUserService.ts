@@ -1,6 +1,6 @@
 import { hash } from 'bcryptjs';
-import UsersRepositoryInterface from '../interfaces/UsersRepositoryInterface';
-import User from '../models/User';
+import UsersRepositoryInterface from '@modules/users/dtos/UsersRepositoryInterface';
+import User from '@modules/users/infra/typeorm/entities/User';
 
 interface Request {
   name: string;

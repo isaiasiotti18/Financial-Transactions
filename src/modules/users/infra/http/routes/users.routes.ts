@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import UserRepository from '../repositories/UsersRepository';
+import UserRepository from '@modules/users/repositories/UsersRepository';
 
-import CreateUserService from '../services/CreateUserService';
+import CreateUserService from '@modules/users/services/CreateUserService';
 
 const userRoutes = Router();
 
@@ -14,7 +14,7 @@ userRoutes.post('/', async (request, response) => {
     const user = await createUser.execute({ name, email, password });
 
     return response.json(user);
-  } catch (err) {
+  } catch (err: any) {
     return response.status(400).json({ error: err.message });
   }
 });
