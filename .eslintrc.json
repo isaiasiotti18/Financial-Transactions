@@ -24,6 +24,7 @@
     "import"
   ],
   "rules": {
+    "import/no-cycle": ["error", { "maxDepth": "infinity" }],
     "no-empty-function": ["error", { "allow": ["constructors"] }],
     "no-useless-constructor": "off",
     "no-unused-vars": "off",
@@ -46,6 +47,7 @@
       "typescript": {
 
       }
-    }
+    },
+    "@typescript-eslint/parser": [".ts", ".tsx"]
   }
 }
