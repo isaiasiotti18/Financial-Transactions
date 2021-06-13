@@ -7,7 +7,7 @@ export default interface TransactionsRepositoryInterface {
 
   filterByCategory?(category: string): Promise<Transaction[] | undefined>;
 
-  allTransactions(): Promise<Transaction[]>;
+  allTransactions(id: string): Promise<Transaction[]>;
 
   balance(): Promise<Balance>;
 

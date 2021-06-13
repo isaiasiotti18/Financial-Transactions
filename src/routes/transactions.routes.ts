@@ -31,9 +31,10 @@ transactionsRoutes.post('/', async (request, response) => {
 });
 
 transactionsRoutes.get('/', async (request, response) => {
+  const { id: user_id } = request.user
   const transactions = new TransactionsRepository();
 
-  const listTransactions = await transactions.allTransactions();
+  const listTransactions = await transactions.allTransactions(user_id);
   const balance = await transactions.balance();
 
   return response.json({

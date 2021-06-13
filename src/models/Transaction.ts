@@ -18,7 +18,7 @@ export default class Transaction {
   @Column()
   user_id: string;
 
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, user => user.id)
   @JoinColumn({ name: 'user_id' })
   user: User;
 

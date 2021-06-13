@@ -4,6 +4,7 @@ import Balance from '../interfaces/Balance';
 
 import TransactionsRepositoryInterface from '../interfaces/TransactionsRepositoryInterface';
 import Transaction from '../models/Transaction';
+import User from '../models/User';
 
 export default class TransactionsRepository
   implements TransactionsRepositoryInterface
@@ -14,8 +15,10 @@ export default class TransactionsRepository
     this.ormRepository = getRepository(Transaction);
   }
 
-  async allTransactions(): Promise<Transaction[]> {
-    const transactions = await this.ormRepository.find();
+  async allTransactions(id: string): Promise<Transaction[]> {
+    const transactions = await this.ormRepository.query(
+      `select * from transactions where user_id = '${id}'::uuid`
+    );
 
     return transactions;
   }
@@ -45,7 +48,7 @@ export default class TransactionsRepository
     return {
       income,
       outcome,
-      total,
+      total: Number(total.toFixed(2)),
     };
   }
 
