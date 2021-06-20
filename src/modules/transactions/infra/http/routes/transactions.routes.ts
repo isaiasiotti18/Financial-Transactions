@@ -1,7 +1,8 @@
 import { Router } from 'express';
+import { getPage } from 'typeorm-pagination';
+
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticate';
 import TransactionsRepository from '@modules/transactions/repositories/TransactionsRepository';
-
 import CreateTransactionService from '@modules/transactions/services/CreateTransactionService';
 
 const transactionsRoutes = Router();
@@ -31,7 +32,7 @@ transactionsRoutes.post('/', async (request, response) => {
 });
 
 transactionsRoutes.get('/', async (request, response) => {
-  const { id: user_id } = request.user
+  const { id: user_id } = request.user;
   const transactions = new TransactionsRepository();
 
   const listTransactions = await transactions.allTransactions(user_id);

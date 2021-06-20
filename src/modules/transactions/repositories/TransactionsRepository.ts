@@ -1,10 +1,10 @@
 import { getRepository, Repository } from 'typeorm';
-import CreateTransactionDTO from '../dtos/CreateTransactionDTO';
 import Balance from '@modules/transactions/dtos/Balance';
 
 import TransactionsRepositoryInterface from '@modules/transactions/dtos/TransactionsRepositoryInterface';
 import Transaction from '@modules/transactions/infra/typeorm/entities/Transaction';
 import User from '@modules/users/infra/typeorm/entities/User';
+import CreateTransactionDTO from '../dtos/CreateTransactionDTO';
 
 export default class TransactionsRepository
   implements TransactionsRepositoryInterface
@@ -17,7 +17,7 @@ export default class TransactionsRepository
 
   async allTransactions(id: string): Promise<Transaction[]> {
     const transactions = await this.ormRepository.query(
-      `select * from transactions where user_id = '${id}'::uuid`
+      `select * from transactions where user_id = '${id}'::uuid`,
     );
 
     return transactions;
