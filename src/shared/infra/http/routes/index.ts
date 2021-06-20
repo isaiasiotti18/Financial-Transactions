@@ -6,7 +6,7 @@ import transactionsRoutes from '@modules/transactions/infra/http/routes/transact
 const routes = Router();
 
 routes.use('/user', userRoutes);
-routes.use('/sessions', sessionsRoutes);
-routes.use('/transactions', transactionsRoutes);
+routes.use('/session', sessionsRoutes);
+routes.use('/transaction', transactionsRoutes);
 
 export default routes;
